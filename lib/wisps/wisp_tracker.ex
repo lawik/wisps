@@ -1,6 +1,8 @@
 defmodule Wisps.WispTracker do
   use GenServer
 
+  require Logger
+
   def start_link(initial_value) do
     GenServer.start_link(__MODULE__, initial_value, name: __MODULE__)
   end
@@ -99,6 +101,8 @@ defmodule Wisps.WispTracker do
       |> Enum.map(fn {_, wisp} ->
         wisp
       end)
+
+    Logger.info("Current wisps: #{inspect(Enum.count(wisps))} Total: #{total_count}")
 
     WispsWeb.Endpoint.broadcast!("page:" <> page, "update", %{
       wisps: wisps,

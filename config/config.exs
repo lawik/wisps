@@ -9,7 +9,17 @@ use Mix.Config
 
 # Configures the endpoint
 config :wisps, WispsWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "wisps.underjord.io"],
+  http: [
+    port: 8600
+  ],
+  https: [
+    port: 8601,
+    cipher_suite: :strong,
+    #         keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
+    #         certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
+    transport_options: [socket_opts: [:inet6]]
+  ],
   secret_key_base: "+o9kQn5VX6vc7xSw6XFOJmT6k8iolvHrDjVzUPGWEjA3gn+nHbWXlObxVVp4ce1D",
   render_errors: [view: WispsWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Wisps.PubSub,

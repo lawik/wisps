@@ -7,6 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :wisps, WispsWeb.Endpoint,
+  url: [host: "localhost"],
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,

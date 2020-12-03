@@ -13,7 +13,7 @@ defmodule Wisps.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Wisps.PubSub},
       # Start the Endpoint (http/https)
-      WispsWeb.Endpoint
+      {SiteEncrypt.Phoenix, WispsWeb.Endpoint}
       # Start a worker by calling: Wisps.Worker.start_link(arg)
       # {Wisps.Worker, arg}
     ]

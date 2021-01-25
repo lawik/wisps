@@ -11,7 +11,8 @@ defmodule WispsWeb.Endpoint do
       client: :native,
       domains: ["wisps.underjord.io"],
       emails: ["lars@underjord.io"],
-      db_folder: Application.app_dir(:wisps, Path.join(~w/priv site_encrypt/)),
+      db_folder:
+        System.get_env("CERT_DIR", Application.app_dir(:wisps, Path.join(~w/priv site_encrypt/))),
 
       # set OS env var CERT_MODE to "staging" or "production" on staging/production hosts
       directory_url:

@@ -102,10 +102,18 @@ defmodule Wisps.WispTracker do
         wisp
       end)
 
+    page_counts =
+      state
+      |> Enum.reduce(%{}, fn {_id, %{page: wisp_page}}, page_counts ->
+        count = Map.get(page_counts, wisp_page, 0) + 1
+        Map.put(page_counts, wisp_page, count)
+      end)
+
     Logger.info("Current wisps: #{inspect(Enum.count(wisps))} Total: #{total_count}")
 
     WispsWeb.Endpoint.broadcast!("page:" <> page, "update", %{
       wisps: wisps,
+      page_counts: page_counts,
       total_count: total_count
     })
   end

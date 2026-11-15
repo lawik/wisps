@@ -5,7 +5,7 @@ defmodule WispsWeb.Gettext do
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import WispsWeb.Gettext
+      use Gettext, backend: WispsWeb.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")
@@ -20,5 +20,5 @@ defmodule WispsWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :wisps
+  use Gettext.Backend, otp_app: :wisps
 end

@@ -6,7 +6,7 @@ defmodule WispsWeb do
   This can be used in your application as:
 
       use WispsWeb, :controller
-      use WispsWeb, :view
+      use WispsWeb, :channel
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,26 +19,10 @@ defmodule WispsWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: WispsWeb
+      use Phoenix.Controller, formats: [:json]
 
       import Plug.Conn
-      import WispsWeb.Gettext
-      alias WispsWeb.Router.Helpers, as: Routes
-    end
-  end
-
-  def view do
-    quote do
-      use Phoenix.View,
-        root: "lib/wisps_web/templates",
-        namespace: WispsWeb
-
-      # Import convenience functions from controllers
-      import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
-
-      # Include shared imports and aliases for views
-      unquote(view_helpers())
+      use Gettext, backend: WispsWeb.Gettext
     end
   end
 
@@ -54,18 +38,7 @@ defmodule WispsWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import WispsWeb.Gettext
-    end
-  end
-
-  defp view_helpers do
-    quote do
-      # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
-
-      import WispsWeb.ErrorHelpers
-      import WispsWeb.Gettext
-      alias WispsWeb.Router.Helpers, as: Routes
+      use Gettext, backend: WispsWeb.Gettext
     end
   end
 

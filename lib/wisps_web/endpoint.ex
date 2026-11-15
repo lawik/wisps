@@ -1,6 +1,5 @@
 defmodule WispsWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :wisps
-  use SiteEncrypt.Phoenix
+  use SiteEncrypt.Phoenix.Endpoint, otp_app: :wisps
 
   @impl SiteEncrypt
   def certification do
@@ -24,14 +23,6 @@ defmodule WispsWeb.Endpoint do
     )
   end
 
-  @impl Phoenix.Endpoint
-  def init(_key, config) do
-    # this will merge key, cert, and chain into `:https` configuration from config.exs
-    {:ok, SiteEncrypt.Phoenix.configure_https(config)}
-
-    # to completely configure https from `init/2`, invoke:
-    #   SiteEncrypt.Phoenix.configure_https(config, port: 4001, ...)
-  end
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.

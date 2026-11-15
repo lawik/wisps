@@ -24,7 +24,6 @@ defmodule WispsWeb.ConnCase do
       import Phoenix.ConnTest
       import WispsWeb.ConnCase
 
-      alias WispsWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint WispsWeb.Endpoint

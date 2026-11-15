@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 # Configures the endpoint
 config :wisps, WispsWeb.Endpoint,
@@ -21,7 +21,8 @@ config :wisps, WispsWeb.Endpoint,
     transport_options: [socket_opts: [:inet6]]
   ],
   secret_key_base: "+o9kQn5VX6vc7xSw6XFOJmT6k8iolvHrDjVzUPGWEjA3gn+nHbWXlObxVVp4ce1D",
-  render_errors: [view: WispsWeb.ErrorView, accepts: ~w(json), layout: false],
+  render_errors: [formats: [json: WispsWeb.ErrorJSON], layout: false],
+  adapter: Phoenix.Endpoint.Cowboy2Adapter,
   pubsub_server: Wisps.PubSub,
   live_view: [signing_salt: "qXZJB9l0"]
 

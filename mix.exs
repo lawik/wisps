@@ -5,9 +5,8 @@ defmodule Wisps.MixProject do
     [
       app: :wisps,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,14 +32,14 @@ defmodule Wisps.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.6"},
-      {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:telemetry_poller, "~> 0.4"},
-      {:gettext, "~> 0.11"},
+      {:phoenix, "~> 1.8.0"},
+      {:phoenix_live_dashboard, "~> 0.8"},
+      {:telemetry_metrics, "~> 1.0"},
+      {:telemetry_poller, "~> 1.0"},
+      {:gettext, "~> 1.0"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:site_encrypt, "~> 0.4"}
+      {:plug_cowboy, "~> 2.7"},
+      {:site_encrypt, "~> 0.7"}
     ]
   end
 
